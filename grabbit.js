@@ -534,6 +534,13 @@ document.addEventListener('keyup', (e) => {
 function updateVisualStyles() {
   if (!currentMatchedAction) return;
 
+  // hide counterLabel and unhighligh selectedLinks if the matched action is doNothing
+  if (counterLabel && currentMatchedAction.doNothing) {
+    counterLabel.style.display = 'none';
+    selectedLinks.forEach(link => link.style.backgroundColor = '');
+    return;
+  }
+
   // Update selection box
   selectionBox.style.borderColor = currentMatchedAction.boxColor;
   selectionBox.style.backgroundColor = `${currentMatchedAction.boxColor}19`;

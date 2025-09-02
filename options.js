@@ -106,6 +106,7 @@ function createActionCard(action) {
   if (action.openLinks) features.push('Open Links');
   if (action.openWindow) features.push('Open in Window');
   if (action.copyUrls) features.push('Copy URLs');
+  if (action.doNothing) features.push('Do nothing')
   if (action.smartSelect === 'on') features.push('Smart Select');
   if (action.copyUrlsAndTitles) {
     features.push('Copy URLs & Titles');
@@ -171,7 +172,7 @@ function createActionCard(action) {
     // Populate the modal with current action data
     document.getElementById('combinedKey').value = action.combination.key;
     document.getElementById('mouseButton').value = action.combination.mouseButton;
-    document.getElementById('actionType').value = action.openLinks ? 'openLinks' : (action.openWindow ? 'openWindow' : (action.copyUrlsAndTitles ? 'copyUrlsAndTitles' : (action.copyTitles ? 'copyTitles' : 'copyUrls')));
+    document.getElementById('actionType').value = action.openLinks ? 'openLinks' : (action.openWindow ? 'openWindow' : (action.copyUrlsAndTitles ? 'copyUrlsAndTitles' : (action.copyTitles ? 'copyTitles' : (action.doNothing ? 'doNothing' : 'copyUrls'))));
     document.getElementById('smartSelect').value = action.smartSelect;
     document.getElementById('reverseOrder').checked = action.reverseOrder || false;
     document.getElementById('openAtEnd').checked = action.openAtEnd || false;
@@ -375,6 +376,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
     copyUrls: actionType.value === 'copyUrls',
     copyUrlsAndTitles: actionType.value === 'copyUrlsAndTitles',
     copyTitles: actionType.value === 'copyTitles',
+    doNothing: actionType.value === 'doNothing',
     smartSelect: document.getElementById('smartSelect').value,
     reverseOrder: document.getElementById('reverseOrder').checked,
     openAtEnd: document.getElementById('openAtEnd').checked,
