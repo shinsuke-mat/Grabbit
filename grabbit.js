@@ -345,6 +345,7 @@ function updateSelectedLinks() {
   // Get all links on the page
   const links = document.querySelectorAll('a');
   // Get the bounding rectangle of the selection box
+  if (!selectionBox) return;
   const boxRect = selectionBox.getBoundingClientRect();
 
   // Iterate through each link
